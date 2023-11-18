@@ -1,0 +1,7 @@
+<div *ngIf="data$ | async as data">
+  ID: {{ data?.products?.items[1]?.name }}
+  123
+</div>
+test
+
+<p *ngIf="data">ID: {{ data?.data?.products?.items[3]?.name }}</p>
