@@ -1,0 +1,38 @@
+
+.product-grid {
+    margin: 16px;
+  }
+  
+  mat-card {
+    width: calc(25% - 16px); /* 25% to have 4 cards in a row, minus margin */
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s;
+  }
+  
+  mat-card:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 600px) {
+    mat-card {
+      width: calc(50% - 16px); /* 50% for 2 cards in a row on smaller screens */
+    }
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
