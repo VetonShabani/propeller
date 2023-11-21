@@ -1,38 +1,94 @@
-
 .product-grid {
-    margin: 16px;
-  }
-  
+  /* margin: 16px; */
+  overflow: auto;
+  max-height: calc(100vh - 220px);
+  min-height: calc(100vh - 220px);
+  background-color: gray;
+}
+
+mat-card {
+  width: calc(25% - 16px);
+  /* 25% to have 4 cards in a row, minus margin */
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s;
+}
+
+mat-card:hover {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
   mat-card {
-    width: calc(25% - 16px); /* 25% to have 4 cards in a row, minus margin */
-    margin-bottom: 16px;
-    box-sizing: border-box;
-    transition: box-shadow 0.3s;
+    width: calc(50% - 16px);
+    /* 50% for 2 cards in a row on smaller screens */
   }
-  
-  mat-card:hover {
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  @media (max-width: 600px) {
-    mat-card {
-      width: calc(50% - 16px); /* 50% for 2 cards in a row on smaller screens */
-    }
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .action-buttons {
-    display: flex;
-    gap: 16px;
-  }
-  
-  .filters {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.list-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-card-header-image {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+
+}
+
+.list-card-header-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.list-card {
+  width: 90%;
+}
+
+.list-paginator {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.list-filters-container {
+  background-color: #585858;
+  display: flex;
+  justify-content: center;
+  padding: 22px 0px 0px 0px;
+  /* height: 48px; */
+  align-items: flex-start;
+}
+
+.list-filter-select {
+  /* height: 48px; */
+  margin-right: 16px;
+}
+
+.list-reset-button {
+  height: 56px;
+  /* margin-top: 16px; */
+}

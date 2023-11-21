@@ -32,11 +32,17 @@ export class DetailsComponent implements OnInit {
 
   loadProductDetails(): void {
     this.productService.getProductById(this.productId).subscribe(x => {
+      console.log(x);
+
       this.product = x.data['product']
 
     });
   }
-  addToOrder(productId: string): void {
+  addToOrder(variant: any): void {
+    const productWithVariant = { ...this.product, variants: variant };
+    this.orderService.addToOrder(productWithVariant);
+  }
+  addToOrder1(productId: string): void {
     this.orderService.addToOrder(productId);
     this.snackbarService.showSuccess('Product added to order!');
   }

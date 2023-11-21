@@ -14,6 +14,7 @@ import { loadInitialFilters, setFilters } from './store/product-list.actions';
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
+  
 })
 export class ListComponent implements OnInit {
 
@@ -29,8 +30,10 @@ export class ListComponent implements OnInit {
   brands: string[] = [];
   selectedCategory: string | null = null;
   selectedBrand: string | null = null;
-  pageSize = 6;
+  pageSizeOptions: number[] = [4, 12, 24, 48, 96];
+  pageSize = 12;
   pageIndex = 0;
+  pageEvent: PageEvent;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
@@ -57,12 +60,13 @@ export class ListComponent implements OnInit {
 
     this.data$ = this.apollo
       .watchQuery({
-        query: GET_PRODUCT_LIST, // path to your GraphQL query file
+        query: GET_PRODUCT_LIST,  
         variables: GET_PRODUCT_LIST_VARIABLES
       })
       .valueChanges.subscribe((result: any) => {
         this.products = result.data.products.items
         this.filteredProducts = this.products;
+        
         this.extractFilters();
         this.applyFilters(this.selectedCategory, this.selectedBrand);
         return result.data.getData;
@@ -128,6 +132,11 @@ export class ListComponent implements OnInit {
     const startIndex = this.pageIndex * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     return this.filteredProducts.slice(startIndex, endIndex);
+  }
+  handlePageEvent(e: PageEvent) {
+    this.pageEvent = e;
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
   }
   navigateToDetails(productId: string): void {
     this.router.navigate(['details', productId]);

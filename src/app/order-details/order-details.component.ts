@@ -8,15 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
-  products: any | null = null;
+  orders: any | null = null;
 
   constructor(private orderService: OrderService, private router: Router) { }
 
   ngOnInit(): void {
-    this.products = this.orderService.getOrderDetails();
-
+    this.orders = this.orderService.getOrderDetails();
+    console.log(this.orders);
+    
   }
   navigateToDetails(): void {
     this.router.navigate(['list']);
+  }
+  clearAllOrders(): void {
+    this.orderService.clearAllOrders();
+    this.orders = []; 
+  }
+  clearOrder(orderId: string): void {
+    this.orderService.clearOrder(orderId);
+    this.orders = this.orders.filter(order => order.id !== orderId);
   }
 }

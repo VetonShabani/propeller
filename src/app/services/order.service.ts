@@ -12,4 +12,12 @@ export class OrderService {
   getOrderDetails(): any[] {
     return this.activeOrder;
   }
+
+  clearAllOrders(): void {
+    this.activeOrder = [];
+  }
+
+  clearOrder(orderId: string): void {
+    this.activeOrder = this.activeOrder.filter(order => order.id !== orderId);
+  }
 }

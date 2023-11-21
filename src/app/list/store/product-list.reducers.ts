@@ -8,12 +8,12 @@ export interface ProductListState {
 
 export const initialState: ProductListState = {
   filters: { category: '', brand: '' },
-  sortBy: 'name', // Default sorting by product name, adjust as needed
+  sortBy: 'name', 
 };
 
 export const productListReducer = createReducer(
   initialState,
   on(setFilters, (state, { category, brand }) => ({ ...state, filters: { category, brand } })),
   on(setSorting, (state, { sortBy }) => ({ ...state, sortBy })),
-  on(loadInitialFilters, (state) => state) // Handle loading initial filters from the store
+  on(loadInitialFilters, (state) => state) 
 );

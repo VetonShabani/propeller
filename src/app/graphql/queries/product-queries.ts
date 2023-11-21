@@ -22,11 +22,12 @@ query GetProduct($id: ID!) {
   product(id: $id) {
     id
     name
-    slug
+    variants { name sku price currencyCode}
     assets {source width height}
-    facetValues { facet { name} }
-    collections { name }
+    facetValues { name facet { name} }
+    collections { name description}
     description
+    translations { languageCode}
   }
 }
 `;
